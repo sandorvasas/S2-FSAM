@@ -103,7 +103,7 @@ class S2FSAM(Optimizer):
                 noise_grads.append(noise)
 
                 if g["adaptive"]:
-                    noise *= torch.abs(prev_p)
+                    noise = noise * torch.abs(prev_p)
                 
                 norm_list.append(noise.norm(p=2).to(dev))
         grad_norm = torch.norm(torch.stack(norm_list), p=2)
